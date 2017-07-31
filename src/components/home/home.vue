@@ -8,11 +8,7 @@
         </div>
         <ul class="taxons">
           <li @click="selectType(item,$event)" v-for="item in taxons.children" class="item active" v-show="item.name">
-            <img src="" alt="">
-            <div class="inner">
-              <p class="name">{{item.name}}</p>
-              <p>Simply. Love</p>
-            </div>
+            <img :src="'http://104.250.140.74:8000/media/image/'+item.images[0].path" alt="">
           </li>
         </ul>
       </div>
@@ -54,6 +50,7 @@
         }
       }).then((response) => {
         this.imgUrl = response.data[0].image
+        console.log(this.imgUrl)
         this.imgUrl = 'http://104.250.140.74:8000' + this.imgUrl
       })
     },
@@ -100,11 +97,11 @@
     position: absolute;
     bottom: 0;
     top: 0;
-    height: 477px;
+    height: 86vh;
     overflow: hidden;
   }
   .content-scroll{
-    height: 100vh;
+    height: 110vh;
     background-color: #eee;
     overflow: hidden;
   }
@@ -137,6 +134,10 @@
   .item .name{
     color: lightseagreen;
     font-size:14px;
+  }
+  .item img{
+    width: 100%;
+    height: 34vh;
   }
 
 </style>
