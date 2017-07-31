@@ -1,0 +1,79 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../fonts/icomoon.eot?s6dc5d');
+  src:  url('../fonts/icomoon.eot?s6dc5d#iefix') format('embedded-opentype'),
+    url('../fonts/icomoon.ttf?s6dc5d') format('truetype'),
+    url('../fonts/icomoon.woff?s6dc5d') format('woff'),
+    url('../fonts/icomoon.svg?s6dc5d#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-password:before {
+  content: "\e90a";
+}
+.icon-news:before {
+  content: "\e90b";
+}
+.icon-address:before {
+  content: "\e90c";
+}
+.icon-design:before {
+  content: "\e90d";
+}
+.icon-package:before {
+  content: "\e90e";
+}
+.icon-Orders:before {
+  content: "\e90f";
+}
+.icon-login:before {
+  content: "\e910";
+}
+.icon-car:before {
+  content: "\e908";
+  color: #cdcdcd;
+}
+.icon-down:before {
+  content: "\e909";
+  color: #bfbfbf;
+}
+.icon-pwd:before {
+  content: "\e906";
+}
+.icon-email:before {
+  content: "\e907";
+}
+.icon-set:before {
+  content: "\e905";
+}
+.icon-del:before {
+  content: "\e904";
+}
+.icon-back:before {
+  content: "\e903";
+}
+.icon-info:before {
+  content: "\e901";
+}
+.icon-cart:before {
+  content: "\e902";
+}
+.icon-home:before {
+  content: "\e900";
+}
