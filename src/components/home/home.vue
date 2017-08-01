@@ -4,7 +4,12 @@
     <div class="content" ref="home">
       <div class="content-scroll">
         <!--http://104.250.140.74:8000/media/image/fa/ce/c2031d1117203dac9c8832126968.png-->
-        <div class="banner"><img :src="this.imgUrl">
+        <!--<div class="banner"><img :src="this.imgUrl">-->
+        <!--</div>-->
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" v-for="banner in banners"><img :src="'http://104.250.140.74:8000'+banner.image" alt=""></div>
+          </div>
         </div>
         <ul class="taxons">
           <li @click="selectType(item,$event)" v-for="item in taxons.children" class="item active" v-show="item.name">
@@ -19,7 +24,7 @@
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
   import type from '../../components/type/type.vue'
-
+  import Swiper from '../../../static/js/swiper.min'
   export default {
     props: {
       taxons: {
@@ -33,7 +38,7 @@
       return {
         selectedItem: {},
         showOnOff: true,
-        imgUrl: {
+        banners: {
           type: Object
         }
       }
@@ -42,6 +47,7 @@
       this.$nextTick(() => {
         this._initScroll()
       })
+      this.lunbo()
     },
     created () {
       this.$http.get('https://bird.ioliu.cn/v1/?url=http://104.250.140.74:8000/app_dev.php/api/banners/', {
@@ -49,9 +55,10 @@
           'Content-Type': 'application/json'
         }
       }).then((response) => {
-        this.imgUrl = response.data[0].image
-        console.log(this.imgUrl)
-        this.imgUrl = 'http://104.250.140.74:8000' + this.imgUrl
+        this.banners = response.data
+        console.log(this.banners)
+//        console.log(response.data)
+//        this.imgUrl = 'http://104.250.140.74:8000' + this.imgUrl
       })
     },
     methods: {
@@ -75,11 +82,21 @@
         this.selectedItem = item
 //        this.$refs.home.hide()
         this.$refs.type.show()
+      },
+      lunbo () {
+        var swiper = new Swiper('.swiper-container', {
+          paginationClickable: true,
+          speed: 1000,
+          observer: true,
+          autoplay: 1500
+        })
+        swiper.hasOwnProperty()
       }
     }
   }
 </script>
 <style scoped>
+  @import "../../../static/css/swiper.min.css";
   header{
     height: 40px;
     line-height:40px;
@@ -93,11 +110,12 @@
     z-index: 500;
   }
   .content{
+    width: 100%;
     margin:40px 0;
     position: absolute;
     bottom: 0;
     top: 0;
-    height: 86vh;
+    height: 84vh;
     overflow: hidden;
   }
   .content-scroll{
@@ -139,5 +157,30 @@
     width: 100%;
     height: 34vh;
   }
-
+.swiper-slide img{
+  width: 100%;
+  height: 28vh;
+}
+  .swiper-container {
+    width: 100%;
+    height: 28vh;
+    margin: 0 auto;
+  }
+  .swiper-slide {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
 </style>
