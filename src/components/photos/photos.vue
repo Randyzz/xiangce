@@ -1,13 +1,20 @@
 <template>
-  <div class="orders" v-show="showFlag">
+  <div class="photos" v-show="showFlag">
     <header>
       <span class="icon-back" @click="back()"></span>
       Photos
       <span class="save">Done</span>
     </header>
-    <form action="" class="form">
-      <input type="file" multiple>
-    </form>
+    <el-upload
+      action="https://jsonplaceholder.typicode.com/posts/"
+      list-type="picture-card"
+      :on-preview="handlePictureCardPreview"
+      :on-remove="handleRemove">
+      <i class="el-icon-plus"></i>
+    </el-upload>
+    <el-dialog v-model="dialogVisible" size="tiny">
+      <img width="100%" :src="dialogImageUrl" alt="">
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -15,6 +22,8 @@
     data () {
       return {
         showFlag: false,
+        dialogImageUrl: '',
+        dialogVisible: false,
         addr: {
           type: Object
         }
@@ -26,18 +35,19 @@
       },
       back () {
         this.showFlag = false
+      },
+      handleRemove (file, fileList) {
+        console.log(file, fileList)
+      },
+      handlePictureCardPreview (file) {
+        this.dialogImageUrl = file.url
+        this.dialogVisible = true
       }
-    },
-    created () {
-      this.$http.jsonp('https://bird.ioliu.cn/v1/?url=http://104.250.140.74:8000/app_dev.php/api/countries/').then((response) => {
-        this.addr = response.data
-        console.log(this.addr)
-      })
     }
   }
 </script>
 <style scoped>
-  .orders {
+  .photos {
     width: 100%;
     position: fixed;
     left: 0;
