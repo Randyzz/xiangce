@@ -5,12 +5,15 @@
       Type
     </header>
       <ul class="sort" ref="sort">
-        <li v-for="(child1,index) in item.children" class="type_item" :class="{'active':currentIndex === index}"
+        <li v-for="(child1,index) in this.item.children" class="type_item" :class="{'active':currentIndex === index}"
             @click="selectItem(index,child1.children[0])">
           {{child1.name}}
         </li>
       </ul>
-    {{showView}}
+    <div v-for="pic in this.item.children">
+      <img @click="" v-for="item in pic.images" :src="'http://104.250.140.74:8000/media/image/'+item.path" alt="">
+    </div>
+    <input type="file" accept="image/*;capture=camera">
   </div>
 </template>
 <script type="text/ecmascript-6">
@@ -27,16 +30,6 @@
         showView: ''
       }
     },
-//    created () {
-//      this.$http.jsonp('https://bird.ioliu.cn/v1/?url=http://104.250.140.74:8000/api/v1/taxons/album', {
-//        headers: {
-//          'Content-Type': 'application/json'
-//        }
-//      }).then((response) => {
-//        this.showView = response.data.children[0]
-//        console.log(this.showView)
-//      })
-//    },
     methods: {
       show () {
         this.showFlag = true
@@ -57,7 +50,7 @@
     position: fixed;
     left: 0;
     top: 0;
-    bottom: 0;
+    bottom: 50px;
     z-index: 30;
     background-color: #fff;
   }
@@ -89,5 +82,9 @@
   .active{
     background-color: lightseagreen;
     color: #fff;
+  }
+  .type img{
+    width: 100%;
+    margin-bottom: 10px;
   }
 </style>

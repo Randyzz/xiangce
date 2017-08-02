@@ -56,9 +56,6 @@
         }
       }).then((response) => {
         this.banners = response.data
-        console.log(this.banners)
-//        console.log(response.data)
-//        this.imgUrl = 'http://104.250.140.74:8000' + this.imgUrl
       })
     },
     methods: {
@@ -67,7 +64,6 @@
           this.homeScroll = new BScroll(this.$refs['home'], {
             click: true
           })
-          console.log(1)
         } else {
           this.homeScroll.refresh()
         }

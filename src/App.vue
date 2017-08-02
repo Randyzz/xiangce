@@ -36,7 +36,6 @@
         }
       }).then((response) => {
         this.taxons = response.data
-        console.log(this.taxons)
       })
 //      this.$http.jsonp('https://bird.ioliu.cn/v1/?url=http://104.250.140.74:8000/api/v1/taxons/album-hard-cover-8x8inch', {
 //        headers: {
