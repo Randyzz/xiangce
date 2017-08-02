@@ -9,7 +9,9 @@
       action="https://jsonplaceholder.typicode.com/posts/"
       list-type="picture-card"
       :on-preview="handlePictureCardPreview"
-      :on-remove="handleRemove">
+      :on-remove="handleRemove"
+      multiple="true"
+    >
       <i class="el-icon-plus"></i>
     </el-upload>
     <el-dialog v-model="dialogVisible" size="tiny">
