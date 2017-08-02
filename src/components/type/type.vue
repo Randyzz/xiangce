@@ -11,11 +11,13 @@
         </li>
       </ul>
     <div v-for="pic in this.item.children">
-      <img @click="" v-for="item in pic.images" :src="'http://104.250.140.74:8000/media/image/'+item.path" alt="">
+      <img @click="selectPhotos()" v-for="item in pic.images" :src="'http://104.250.140.74:8000/media/image/'+item.path" alt="">
     </div>
+    <photos ref="photos"></photos>
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import photos from '../photos/photos.vue'
   export default {
     props: {
       item: {
@@ -39,7 +41,13 @@
       selectItem (i, v) {
         this.currentIndex = i
         this.showView = v
+      },
+      selectPhotos () {
+        this.$refs.photos.show()
       }
+    },
+    components: {
+      photos
     }
   }
 </script>
